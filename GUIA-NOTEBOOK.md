@@ -2,11 +2,13 @@
 
 O [notebook](solucao-digit-recognizer.ipynb) ensina o computador a reconhecer dígitos manuscritos de 0 a 9. Ele aprende com imagens cujo dígito já é conhecido, compara três formas de classificar imagens e gera um CSV com as previsões para o Kaggle.
 
-Execute as células de cima para baixo. As células de texto explicam o próximo passo, e as de código usam dados e funções preparados nas anteriores.
+Execute as células de cima para baixo a partir da raiz do repositório. No Colab, use a raiz da cópia do repositório que está no kernel remoto. Se a cópia estiver em `/content/Digit-Recognizer-Challenge`, use `%cd /content/Digit-Recognizer-Challenge`. Se estiver trabalhando direto em `/content`, coloque os dois CSVs em `/content/data/`.
+
+Os modelos usam CPU, inclusive num kernel com GPU. Se faltar alguma biblioteca, execute `%pip install numpy pandas scikit-learn opencv-python-headless matplotlib threadpoolctl` numa célula do notebook.
 
 ## Célula 1 · Apresentação
 
-Explica o objetivo do projeto e como executar o notebook a partir da raiz do repositório. No Colab, a raiz precisa estar acessível ao kernel remoto. O treinamento e a previsão usam CPU, inclusive quando o Colab disponibiliza uma GPU.
+Apresenta o objetivo do projeto e a comparação entre modelos que usam os pixels ou o formato dos traços para reconhecer dígitos.
 
 ## Célula 2 · Bibliotecas e caminhos
 
@@ -47,3 +49,7 @@ Explica que, após a escolha da variante, o notebook treina de novo usando todas
 ## Célula 10 · Treino final e exportação
 
 Lê as 28.000 imagens de `data/test.csv`, treina a variante escolhida e faz as previsões. Monta as colunas `ImageId`, com números de 1 a 28.000, e `Label`, com o dígito previsto. Por fim, grava `submission.csv` na raiz do repositório e mostra as primeiras previsões.
+
+## Célula 11 · Resultados e conclusão
+
+Resume a comparação. Avaliar cinco versões da imagem deu três acertos a mais na validação original, mas a variante simples se saiu melhor no teste com imagens deslocadas.
